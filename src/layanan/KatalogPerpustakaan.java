@@ -7,7 +7,7 @@ package layanan;
 import eksepsi.KoleksiSedangDipinjamException;
 import eksepsi.KoleksiTidakLayakException;
 import eksepsi.PustakaException;
-import model.KoleksiPerpustakaan;
+import model.Koleksi;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,19 +19,19 @@ import java.util.List;
  * @author 14S
  */
 public class KatalogPerpustakaan {
-    private final List<KoleksiPerpustakaan> daftar = new ArrayList<>();
+    private final List<Koleksi> daftar = new ArrayList<>();
 
-    public void tambah(KoleksiPerpustakaan koleksi) {
+    public void tambah(Koleksi koleksi) {
         daftar.add(koleksi);
     }
 
-    public List<KoleksiPerpustakaan> getDaftar() {
+    public List<Koleksi> getDaftar() {
         return Collections.unmodifiableList(daftar);
     }
 
     /** Memproses semua koleksi secara polimorfik, tanpa pengecekan tipe. */
     public void cetakStatus() {
-        for (KoleksiPerpustakaan k : daftar) {
+        for (Koleksi k : daftar) {
             String layak = k.layakDipinjam() ? "LAYAK" : "TIDAK LAYAK";
             String dipinjam = k.isSedangDipinjam() ? "Dipinjam" : "Tersedia";
             System.out.println(k.deskripsi());
@@ -40,12 +40,12 @@ public class KatalogPerpustakaan {
     }
 
     /** Aturan pengurutan ditentukan dari luar lewat Comparator. */
-    public void urut(Comparator<? super KoleksiPerpustakaan> pembanding) {
+    public void urut(Comparator<? super Koleksi> pembanding) {
         daftar.sort(pembanding);
     }
 
     public void pinjam(String kode) throws PustakaException {
-        KoleksiPerpustakaan k = cari(kode);
+        Koleksi k = cari(kode);
         if (k.isSedangDipinjam()) {
             throw new KoleksiSedangDipinjamException(k.getJudul());
         }
@@ -59,8 +59,8 @@ public class KatalogPerpustakaan {
         cari(kode).setSedangDipinjam(false);
     }
 
-    private KoleksiPerpustakaan cari(String kode) throws PustakaException {
-        for (KoleksiPerpustakaan k : daftar) {
+    private Koleksi cari(String kode) throws PustakaException {
+        for (Koleksi k : daftar) {
             if (k.getKode().equalsIgnoreCase(kode)) {
                 return k;
             }

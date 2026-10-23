@@ -9,7 +9,7 @@ package model;
  * @author 14S
  */
 /** Berkas digital tidak memiliki rak, sehingga tidak mengimplementasikan Terarsip. */
-public class BerkasDigital extends KoleksiPerpustakaan {
+public class BerkasDigital extends Koleksi {
     private final int ukuranMB;
     private final String tautanUnduh;
 

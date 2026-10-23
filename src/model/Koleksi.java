@@ -9,13 +9,13 @@ package model;
  * @author 14S
  */
 /** Kelas induk seluruh jenis koleksi perpustakaan. */
-public abstract class KoleksiPerpustakaan {
+public abstract class Koleksi {
     private final String kode;
     private final String judul;
     private final int tahunTerbit;
     private boolean sedangDipinjam;
 
-    protected KoleksiPerpustakaan(String kode, String judul, int tahunTerbit) {
+    protected Koleksi(String kode, String judul, int tahunTerbit) {
         this.kode = kode;
         this.judul = judul;
         this.tahunTerbit = tahunTerbit;

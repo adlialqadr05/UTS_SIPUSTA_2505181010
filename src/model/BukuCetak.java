@@ -8,7 +8,7 @@ package model;
  *
  * @author 14S
  */
-public class BukuCetak extends KoleksiPerpustakaan implements Terarsip {
+public class BukuCetak extends Koleksi implements Terarsip {
     private final int jumlahHalaman;
     private final String nomorRak;
     private final int lantai;

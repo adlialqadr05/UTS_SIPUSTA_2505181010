@@ -8,7 +8,7 @@ package model;
  *
  * @author 14S
  */
-public class Majalah extends KoleksiPerpustakaan implements Terarsip {
+public class Majalah extends Koleksi implements Terarsip {
     private final int edisi;
     private final String bulanTerbit;
     private final boolean edisiTerbaru;

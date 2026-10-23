@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package layanan;
-import model.KoleksiPerpustakaan;
+import model.Koleksi;
 
 import java.util.Comparator;
 
@@ -12,13 +12,13 @@ import java.util.Comparator;
  * @author 14S
  */
 /** Koleksi layak pinjam tampil lebih dulu, lalu diurutkan berdasarkan judul. */
-public class UrutLayakLaluJudul implements Comparator<KoleksiPerpustakaan> {
-    private final Comparator<KoleksiPerpustakaan> berlapis =
-            Comparator.comparing(KoleksiPerpustakaan::layakDipinjam, Comparator.reverseOrder())
-                      .thenComparing(KoleksiPerpustakaan::getJudul, String.CASE_INSENSITIVE_ORDER);
+public class UrutLayakLaluJudul implements Comparator<Koleksi> {
+    private final Comparator<Koleksi> berlapis =
+            Comparator.comparing(Koleksi::layakDipinjam, Comparator.reverseOrder())
+                      .thenComparing(Koleksi::getJudul, String.CASE_INSENSITIVE_ORDER);
 
     @Override
-    public int compare(KoleksiPerpustakaan a, KoleksiPerpustakaan b) {
+    public int compare(Koleksi a, Koleksi b) {
         return berlapis.compare(a, b);
     }
 }
